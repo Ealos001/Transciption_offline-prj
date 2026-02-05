@@ -1,0 +1,16 @@
+--extra-index-url https://download.pytorch.org/whl/cu121
+
+openai-whisper==20250625
+torch==2.5.1+cu121
+torchaudio==2.5.1+cu121
+
+ffmpeg-python==0.2.0
+pydub==0.25.1
+requests==2.32.5
+
+datapizza-ai==0.0.9
+datapizza-ai-clients-openai-like==0.0.8
+
+numpy==2.3.5
+numba==0.63.1
+# Requires ffmpeg installed and available in PATH

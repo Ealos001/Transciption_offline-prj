@@ -1,0 +1,65 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+.venv
+whispen/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Output files (generati dalla pipeline)
+chunks/
+output/
+*.mp4
+*.wav
+*.mp3
+
+# Model cache (Whisper scarica modelli)
+~/.cache/whisper/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets (se usi .env file)
+.env
+.env.local
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Distribution
+dist/
+build/
+*.egg-info/
+
+# Whisper / audio
+*.wav
+*.mp3
+*.m4a
+*.flac
+outputs/
+.whisper/
+
+# OS / editor
+.vscode/
+.DS_Store
