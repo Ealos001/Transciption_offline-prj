@@ -1,24 +1,3 @@
-"""Configurazione centralizzata"""
-
-from pathlib import Path
-
-# Percorsi
-INPUT_VIDEO = Path("conferenza.mp4")
-CHUNKS_DIR = Path("chunks")
-OUTPUT_DIR = Path("output")
-
-# Parametri per il chunking
-MAX_CHUNK_SECONDS = 480 #8min
-OVERLAP_SECONDS = 2
-
-# WHISPER
-WHISPER_MODEL = "medium"
-WHISPER_DEVICE = "cuda" #o "cpu"
-
-#Datapizza
-OLLAMA_API_KEY = ""
-OLLAMA_MODEL = "llama3.1:8b"
-OLLAMA_BASE_URL = "http://localhost:11434/v1"
 """
 Configurazione centralizzata del progetto
 
@@ -32,9 +11,9 @@ from pathlib import Path
 # PERCORSI
 # =============================================================================
 
-INPUT_VIDEO = Path("conferenza.mp4")  # Video da trascrivere
-CHUNKS_DIR = Path("chunks")           # Directory chunk temporanei
-OUTPUT_DIR = Path("output")           # Directory output trascrizioni
+INPUT_VIDEO = Path("video.mp4")      # Video da trascrivere
+CHUNKS_DIR = Path("chunks")          # Directory chunk temporanei
+OUTPUT_DIR = Path("output")          # Directory output trascrizioni
 
 # =============================================================================
 # PARAMETRI CHUNKING
@@ -83,11 +62,12 @@ LANGUAGE_DETECTION_MODE = "auto"
 FIXED_LANGUAGE = "it"  # Usato solo se mode = "fixed"
 
 # Prompt iniziali per Whisper (migliorano accuratezza su termini tecnici)
+# Personalizza questi prompt in base al contenuto del tuo video
 INITIAL_PROMPT = {
-    "it": "Conferenza accademica in italiano con termini tecnici di design e architettura.",
-    "es": "Conferencia académica en español con términos técnicos de diseño y arquitectura.",
-    "en": "Academic conference in English with technical terminology related to design and architecture.",
-    "fr": "Conférence académique en français avec une terminologie technique liée au design et à l'architecture."
+    "it": "Trascrizione audio in italiano con terminologia tecnica e formale.",
+    "es": "Transcripción de audio en español con terminología técnica y formal.",
+    "en": "Audio transcription in English with technical and formal terminology.",
+    "fr": "Transcription audio en français avec terminologie technique et formelle."
 }
 
 # =============================================================================
@@ -95,41 +75,7 @@ INITIAL_PROMPT = {
 # =============================================================================
 
 # API Key da variabile d'ambiente (sicuro) o fallback vuoto
+# Per Ollama locale (default), nessuna chiave necessaria
 OLLAMA_API_KEY = os.getenv("OLLAMA_API_KEY", "")
 OLLAMA_MODEL = "llama3.1:8b"
 OLLAMA_BASE_URL = "http://localhost:11434/v1"
-#Language detection
-LANGUAGE_DETECTION_MODE = "auto"
-FIXED_LANGUAGE = "it"
-
-# Models config
-MODEL_CONFIGS = {
-    "base": {
-        "name": "base", 
-        "beam_size": 2,
-        "best_of": 2,
-    },
-    "small": {
-        "name": "small",
-        "beam_size": 3,
-        "best_of": 2,
-    },
-    "medium": {
-        "name": "medium",
-        "beam_size": 3,
-        "best_of": 3,
-    },
-    "large": {
-        "name": "large-v3",
-        "beam_size": 5,
-        "best_of": 5,
-    }
-}
-
-#initial prompt
-INITIAL_PROMPT = {
-    "it": "Conferenza accademica in italiano con termini tecnici di design e architettura.",
-    "es": "Conferencia académica en español con términos técnicos de diseño y arquitectura.",
-    "en": "Academic conference in English with technical terminology related to design and architecture.",
-    "fr": "Conférence académique en français avec une terminologie technique liée au design et à l’architecture."
-}
